@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include <ctime>
-
+#include <vector>
 using namespace std;
 
 #ifndef PHRASE_H
@@ -10,14 +10,19 @@ using namespace std;
 class Phrase{
     public:
 
-    Phaser();
+    Phrase();
     //Default constructor
-
-    Phaser(String input);
+    Phrase(string input);
     //Overloaded Constructor
+    ~Phrase();
+    //Destructor
+    void Display();
+    //Just displays the text.
 
     private:
 
+    vector<char> textVec;
+    vector<char> nondups;
 };
 
 #endif

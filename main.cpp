@@ -1,17 +1,18 @@
 #include <iostream>
-#include <time.h>
+#include <ctime>
 #include <string>
+#include <vector>
+#include "Phrase.h"
 using namespace std;
 
-const char puncMarks[] = ".,:;?()[]\"'.!/-_*";
+const char puncMarks[] = " .,:;?()[]\"'.!/-_*";
 
 int main() {
     srand(time(nullptr));
-    string st =  "Hello World";
 
-    for (int i = 0; i < 17; ++i) {
-        cout << i << " " << puncMarks[i] << endl;
-    }
+    Phrase* test = new Phrase("This is a Test!");
+
+    test->Display();
 
     return 0;
 }
