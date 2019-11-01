@@ -6,20 +6,19 @@ Phrase::Phrase() {
 
 Phrase::Phrase(string text) {
     for (unsigned int i = 0; i < text.length(); ++i) {
-        textVec.push_back(text[i]);
+        textVec.push_back(tolower(text[i]));
     }
 
-    for (int j = 0; j < text.length(); ++j) {
-        cout << j << endl;
+    for (unsigned int j = 0; j < textVec.size(); ++j) {
         bool dup = false;
         for (unsigned int k = 0; k < nondups.size(); ++k) {
-            if (text[j] == nondups[k]){
+            if (textVec[j] == nondups[k]){
                dup = true;
             }
 
         }
         if (!dup){
-            nondups.push_back(text[j]);
+            nondups.push_back(textVec[j]);
         }
     }
 }

@@ -13,6 +13,5 @@ int main() {
     Phrase* test = new Phrase("This is a Test!");
 
     test->Display();
-
     return 0;
 }
