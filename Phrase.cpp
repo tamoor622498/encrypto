@@ -13,20 +13,22 @@ Phrase::Phrase(string text) {
     for (char j : textVec) {
         bool dup = false;
         bool special = false;
-        for (char nondup : nondups) {
-            if (j == nondup){
-               dup = true;
+
+        for (auto & symbol : symbols)
+        {
+            if (j == get<0>(symbol)){
+                dup = true;
             }
         }
 
-        for (int l = 0; l < 17; ++l) {
-            if (j == puncMarks[l]){
+        for (char l : puncMarks) {
+            if (j == l){
                 special = true;
             }
         }
 
         if (!dup && !special){
-            nondups.push_back(j);
+            symbols.emplace_back(j," ");
         }
     }
 }
@@ -40,8 +42,14 @@ void Phrase::Display() {
         cout << i;
     }
     cout << endl;
-    for (unsigned int j = 0; j < nondups.size(); ++j) {
-        cout << nondups[j];
+
+    for (auto & symbol : symbols)
+    {
+        cout << get<0>(symbol) << get<1>(symbol);
     }
     cout << endl;
+}
+
+void Phrase::Encryption() {
+    char en;
 }
