@@ -8,9 +8,9 @@ using namespace std;
 
 int main() {
 
-    Phrase* test = new Phrase("This is a Test!");
+    auto *test = new Phrase(
+            "It is possible to commit no mistakes and still lose. That is not weakness, that is life.");
     test->Display();
-    test->Encryption();
     delete test;
 
     return 0;
