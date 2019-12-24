@@ -28,7 +28,7 @@ Phrase::Phrase(string text) {
         }
 
         if (!dup && !special){
-            symbols.emplace_back(j," ");
+            symbols.emplace_back(j,Encryption());
         }
     }
 }
@@ -50,6 +50,9 @@ void Phrase::Display() {
     cout << endl;
 }
 
-void Phrase::Encryption() {
-    char en;
+string Phrase::Encryption() {
+    unsigned int i = rand()% (characters.size()) + 0;
+    string sel = characters[i];
+    characters.erase(characters.begin()+i);
+    return sel;
 }
