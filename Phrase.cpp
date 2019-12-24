@@ -7,10 +7,12 @@ Phrase::Phrase() {
 Phrase::Phrase(string text) {
     char puncMarks[] = " .,:;?()[]\"'.!/-_*";
     for (char i : text) {
-        textVec.push_back(tolower(i));
+        char c = tolower(i);
+        textVec.emplace_back(1,c);
+        //stirtextVec.emplace_back(1,c);
     }
 
-    for (char j : textVec) {
+    for (string j : textVec) {
         bool dup = false;
         bool special = false;
 
@@ -22,7 +24,7 @@ Phrase::Phrase(string text) {
         }
 
         for (char l : puncMarks) {
-            if (j == l){
+            if (j == string(1,l)){
                 special = true;
             }
         }
@@ -31,6 +33,7 @@ Phrase::Phrase(string text) {
             symbols.emplace_back(j,Encryption());
         }
     }
+    Replacement();
 }
 
 Phrase::~Phrase() {
@@ -38,16 +41,17 @@ Phrase::~Phrase() {
 }
 
 void Phrase::Display() {
-    for (char i : textVec) {
+    for (string i : textVec) {
         cout << i;
     }
     cout << endl;
 
     for (auto & symbol : symbols)
     {
-        cout << get<0>(symbol) << get<1>(symbol);
+        cout << get<0>(symbol)<< get<1>(symbol);
     }
     cout << endl;
+
 }
 
 string Phrase::Encryption() {
@@ -55,4 +59,10 @@ string Phrase::Encryption() {
     string sel = characters[i];
     characters.erase(characters.begin()+i);
     return sel;
+}
+
+void Phrase::Replacement() {
+    for (int i = 0; i < textVec.size(); ++i) {
+
+    }
 }
