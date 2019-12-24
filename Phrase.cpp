@@ -29,6 +29,7 @@ Phrase::Phrase(const string &text) {
 
         if (!dup && !special) {
             symbols.emplace_back(j, Encryption());
+            userEdit.emplace_back(" ", Encryption());
         }
     }
     Encryption();
@@ -69,3 +70,21 @@ void Phrase::Replacement() {
         }
     }
 }
+
+bool Phrase::WinCheck() {
+    bool win = true;
+    for (int i = 0; i < symbols.size(); ++i) {
+        if (get<0>(symbols[i]) != get<0>(userEdit[i])){
+            win = false;
+        }
+    }
+    return win;
+}
+
+void Phrase::Menu() {
+    cout << "Select character to replace:" <<endl;
+    for (int i = 0; i < symbols.size(); ++i) {
+        cout << i+1 << '\t' << get<1>(symbols[i]) << endl;
+    }
+}
+

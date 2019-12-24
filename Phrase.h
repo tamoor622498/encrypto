@@ -24,9 +24,13 @@ public:
     //Finds the symbols to use
     void Replacement();
     //Replaces characters with symbols
+    bool WinCheck();
+    //Checks if the player won;
+    void Menu();
 
 private:
     vector<string> textVec;
+    vector<tuple<string, string>> userEdit;
     vector<tuple<string, string>> symbols;
     vector<string> characters = {"\u00A2", "\u00A3", "\u00A5", "\u00A7", "\u00B5", \
 "\u00C2", "\u00C6", "\u00D0", "\u00D8", "\u00DF", "\u00E6", "\u0152", "\u0190", \
