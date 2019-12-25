@@ -20,13 +20,16 @@ public:
     //Destructor
     void Display();
     //Just displays the text.
-    string Encryption();
+    string SymSel();
     //Finds the symbols to use
-    void Replacement();
+    void Encryption();
     //Replaces characters with symbols
     bool WinCheck();
     //Checks if the player won;
-    void Menu();
+    tuple<int,string> Menu();
+    //Menu for user selection
+    void Decryption(tuple<int,string>);
+
 
 private:
     vector<string> textVec;

@@ -4,6 +4,7 @@
 Game::Game(){
     auto *test = new Phrase("It is possible to commit no mistakes and still lose. That is not weakness, that is life.");
     levelsList.push_back(test);
+    test = nullptr;
 }
 
 Game::~Game() {
@@ -14,5 +15,10 @@ Game::~Game() {
 }
 
 void Game::GameStart() {
+    for (int i = 0; i < levelsList.size(); ++i) {
+        cout << "Starting level " << i++ << ":" << endl;
+        while (!(levelsList[i]->WinCheck())){
 
+        }
+    }
 }
