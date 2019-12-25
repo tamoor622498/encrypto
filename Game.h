@@ -16,6 +16,7 @@ public:
     //Constructor
     ~Game();
     //Destructor
+    void GameStart();
 
 private:
     vector<Phrase*> levelsList;

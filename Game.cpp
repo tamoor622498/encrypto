@@ -9,6 +9,10 @@ Game::Game(){
 Game::~Game() {
     for (auto & i : levelsList) {
         delete i;
+        i = nullptr;
     }
+}
+
+void Game::GameStart() {
 
 }
