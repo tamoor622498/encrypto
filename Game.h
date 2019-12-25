@@ -13,13 +13,15 @@ using namespace std;
 class Game {
 public:
     Game();
+
     //Constructor
     ~Game();
+
     //Destructor
     void GameStart();
 
 private:
-    vector<Phrase*> levelsList;
+    vector<Phrase *> levelsList;
 };
 
 #endif

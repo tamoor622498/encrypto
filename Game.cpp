@@ -1,14 +1,14 @@
 #include "Game.h"
 #include "Phrase.h"
 
-Game::Game(){
+Game::Game() {
     auto *test = new Phrase("It is possible to commit no mistakes and still lose. That is not weakness, that is life.");
     levelsList.push_back(test);
     test = nullptr;
 }
 
 Game::~Game() {
-    for (auto & i : levelsList) {
+    for (auto &i : levelsList) {
         delete i;
         i = nullptr;
     }
@@ -16,9 +16,12 @@ Game::~Game() {
 
 void Game::GameStart() {
     for (int i = 0; i < levelsList.size(); ++i) {
-        cout << "Starting level " << i++ << ":" << endl;
-        while (!(levelsList[i]->WinCheck())){
-
+        cout << "Starting level " << i+1 << ":" << endl;
+        while (!(levelsList[i]->WinCheck())) {
+            levelsList[i]->Display();
+            tuple<int,string> change = levelsList[i]->Menu();
+            levelsList[i]->Decryption(change);
         }
+        cout << "You win!" << endl;
     }
 }

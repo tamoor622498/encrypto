@@ -12,23 +12,31 @@ using namespace std;
 class Phrase {
 public:
     Phrase();
+
     //Default constructor
     explicit Phrase(const string &input);
+
     //Overloaded Constructor
     //and process's the string
     ~Phrase();
+
     //Destructor
     void Display();
+
     //Just displays the text.
     string SymSel();
+
     //Finds the symbols to use
     void Encryption();
+
     //Replaces characters with symbols
     bool WinCheck();
+
     //Checks if the player won;
-    tuple<int,string> Menu();
+    tuple<int, string> Menu();
+
     //Menu for user selection
-    void Decryption(tuple<int,string>);
+    void Decryption(tuple<int, string>);
 
 
 private:

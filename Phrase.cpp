@@ -28,8 +28,9 @@ Phrase::Phrase(const string &text) {
         }
 
         if (!dup && !special) {
-            symbols.emplace_back(j, SymSel());
-            userEdit.emplace_back(" ", SymSel());
+            string sym = SymSel();
+            symbols.emplace_back(j, sym);
+            userEdit.emplace_back(" ", sym);
         }
     }
     SymSel();
@@ -46,12 +47,9 @@ void Phrase::Display() {
     }
     cout << endl;
 
-    for (auto &symbol : symbols) {
-        cout << get<0>(symbol)<< '\t' << get<1>(symbol);
-        cout << endl;
+    for (auto & j : userEdit) {
+        cout << get<0>(j)<< " " << get<1>(j) << endl;
     }
-    //cout << endl;
-
 }
 
 string Phrase::SymSel() {
@@ -74,21 +72,21 @@ void Phrase::Encryption() {
 bool Phrase::WinCheck() {
     bool win = true;
     for (int i = 0; i < symbols.size(); ++i) {
-        if (get<0>(symbols[i]) != get<0>(userEdit[i])){
+        if (get<0>(symbols[i]) != get<0>(userEdit[i])) {
             win = false;
         }
     }
     return win;
 }
 
-tuple<int,string> Phrase::Menu() {
-    tuple <int, string> cPick;
+tuple<int, string> Phrase::Menu() {
+    tuple<int, string> cPick;
     char cSel;
-    make_tuple(0," ");
-    do{
-        cout << "Select character to replace:" <<endl;
+    make_tuple(0, " ");
+    do {
+        cout << "Select character to replace:" << endl;
         for (int i = 0; i < symbols.size(); ++i) {
-            cout << i+1 << '\t' << get<1>(symbols[i]) << endl;
+            cout << i + 1 << '\t' << get<1>(symbols[i]) << endl;
         }
         cin >> get<0>(cPick);
     } while ((get<0>(cPick) < 1) || (get<0>(cPick) > symbols.size()));
@@ -96,17 +94,15 @@ tuple<int,string> Phrase::Menu() {
     cout << "Enter replacement character:" << endl;
     cin >> cSel;
     cSel = _tolower(cSel);
-    get<1>(cPick) = string(1,cSel);
+    get<1>(cPick) = string(1, cSel);
     return cPick;
 }
 
-void Phrase::Decryption(tuple<int,string> userSel) {
+void Phrase::Decryption(tuple<int, string> userSel) {
     get<0>(userEdit[get<0>(userSel)]) = get<1>(userSel);
-    for (auto &t : textVec) {
-        for (auto &change : userEdit) {
-            if (t == get<0>(change)) {
-                t = get<1>(change);
-            }
+    for (auto & i : textVec) {
+        if (i == get<1>(symbols[get<0>(userSel)])){
+            i = get<1>(userSel);
         }
     }
 }
