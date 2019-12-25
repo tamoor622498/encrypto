@@ -3,4 +3,4 @@ project(encrypto)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(encrypto main.cpp Phrase.h Phrase.cpp)
+add_executable(encrypto main.cpp Phrase.h Phrase.cpp game.h game.cpp)
