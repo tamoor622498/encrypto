@@ -40,6 +40,7 @@ public:
     //Replaces text with user selection;
 
     void SetAuthor(string auth);
+
     string GetAuthor();
 
     string GetInput();

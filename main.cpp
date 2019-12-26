@@ -8,7 +8,7 @@
 using namespace std;
 
 int main() {
-    Game* test = new Game();
+    Game *test = new Game();
     test->GameStart();
     //test->Display();
     delete test;

@@ -48,7 +48,7 @@ void Phrase::Display() {
     for (const string &i : textVec) {
         cout << i;
     }
-    cout << " -"<< GetAuthor() << endl;
+    cout << " -" << GetAuthor() << endl;
 
 }
 
@@ -100,8 +100,8 @@ tuple<int, string> Phrase::Menu() {
 
 void Phrase::Decryption(tuple<int, string> userSel) {
     get<0>(userEdit[get<0>(userSel)]) = get<1>(userSel);
-    for (auto & i : textVec) {
-        if (i == get<1>(userEdit[get<0>(userSel)])){
+    for (auto &i : textVec) {
+        if (i == get<1>(userEdit[get<0>(userSel)])) {
             i = get<1>(userSel);
         }
     }
