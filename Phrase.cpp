@@ -1,10 +1,13 @@
 #include "Phrase.h"
+#include <utility>
 
 Phrase::Phrase() {
     cout << "Default constructor" << endl;
 }
 
-Phrase::Phrase(const string &text) {
+Phrase::Phrase(const string &text, const string &auth) {
+    author = auth;
+    input = text;
     char puncMarks[] = " .,:;?()[]\"'.!/-_*#";
     for (char i : text) {
         char c = tolower(i);
@@ -38,7 +41,7 @@ Phrase::Phrase(const string &text) {
 }
 
 Phrase::~Phrase() {
-    cout << "Destructor" << endl;
+    //cout << "Destructor" << endl;
 }
 
 void Phrase::Display() {
@@ -105,4 +108,16 @@ void Phrase::Decryption(tuple<int, string> userSel) {
             i = get<1>(userSel);
         }
     }
+}
+
+void Phrase::SetAuthor(string auth) {
+    author = move(auth);
+}
+
+string Phrase::GetAuthor() {
+    return author;
+}
+
+string Phrase::GetInput() {
+    return input;
 }

@@ -9,7 +9,8 @@ using namespace std;
 
 int main() {
     Game* test = new Game();
-    test->GameStart();
+    //test->GameStart();
+    test->Display();
     delete test;
     return 0;
 }

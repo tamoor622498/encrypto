@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <ctime>
 #include <vector>
 #include <tuple>
@@ -13,12 +14,16 @@ using namespace std;
 class Game {
 public:
     Game();
-
     //Constructor
-    ~Game();
 
+    ~Game();
     //Destructor
+
     void GameStart();
+    //Starts game;
+
+    void Display();
+    //displays list
 
 private:
     vector<Phrase *> levelsList;

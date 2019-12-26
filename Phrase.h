@@ -12,37 +12,45 @@ using namespace std;
 class Phrase {
 public:
     Phrase();
-
     //Default constructor
-    explicit Phrase(const string &input);
 
+    explicit Phrase(const string &input, const string &auth);
     //Overloaded Constructor
     //and process's the string
+
     ~Phrase();
-
     //Destructor
+
     void Display();
-
     //Just displays the text.
+
     string SymSel();
-
     //Finds the symbols to use
+
     void Encryption();
-
     //Replaces characters with symbols
+
     bool WinCheck();
-
     //Checks if the player won;
-    tuple<int, string> Menu();
 
+    tuple<int, string> Menu();
     //Menu for user selection
+
     void Decryption(tuple<int, string>);
+    //Replaces text with user selection;
+
+    void SetAuthor(string auth);
+    string GetAuthor();
+
+    string GetInput();
 
 
 private:
     vector<string> textVec;
     vector<tuple<string, string>> userEdit;
     vector<tuple<string, string>> symbols;
+    string author = "Unknown";
+    string input;
     vector<string> characters = {"\u00A2", "\u00A3", "\u00A5", "\u00A7", "\u00B5", \
 "\u00C2", "\u00C6", "\u00D0", "\u00D8", "\u00DF", "\u00E6", "\u0152", "\u0190", \
 "\u0192", "\u019B", "\u019E", "\u01A2", "\u01A9", "\u01B1", "\u01B5", "\u01B8", \

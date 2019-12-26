@@ -2,9 +2,21 @@
 #include "Phrase.h"
 
 Game::Game() {
-    auto *test = new Phrase("It is possible to commit no mistakes and still lose. That is not weakness, that is life.");
-    levelsList.push_back(test);
-    test = nullptr;
+    //auto *test = new Phrase("It is possible to commit no mistakes and still lose. That is not weakness, that is life.");
+    //levelsList.push_back(test);
+    //test = nullptr;
+    fstream levels;
+    levels.open("../Phrases.txt");
+    string text;
+    string auth;
+    Phrase* newPhrase;
+    while (getline(levels, text, '#')){
+        getline(levels,auth);
+        newPhrase = new Phrase(text,auth);
+        levelsList.push_back(newPhrase);
+    }
+    newPhrase = nullptr;
+    levels.close();
 }
 
 Game::~Game() {
@@ -23,5 +35,11 @@ void Game::GameStart() {
             levelsList[i]->Decryption(change);
         }
         cout << "You win!" << endl;
+    }
+}
+
+void Game::Display() {
+    for (auto & i : levelsList) {
+        cout << i->GetInput() << '\n' << i->GetAuthor() << endl;
     }
 }
