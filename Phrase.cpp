@@ -33,7 +33,7 @@ Phrase::Phrase(const string &text, const string &auth) {
         if (!dup && !special) {
             string sym = SymSel();
             symbols.emplace_back(j, sym);
-            userEdit.emplace_back(" ", sym);
+            userEdit.emplace_back(sym, sym);
         }
     }
     SymSel();
@@ -48,11 +48,8 @@ void Phrase::Display() {
     for (const string &i : textVec) {
         cout << i;
     }
-    cout << endl;
+    cout << " -"<< GetAuthor() << endl;
 
-    for (auto & j : userEdit) {
-        cout << get<0>(j)<< " " << get<1>(j) << endl;
-    }
 }
 
 string Phrase::SymSel() {
@@ -88,8 +85,8 @@ tuple<int, string> Phrase::Menu() {
     make_tuple(0, " ");
     do {
         cout << "Select character to replace:" << endl;
-        for (int i = 0; i < symbols.size(); ++i) {
-            cout << i + 1 << '\t' << get<1>(symbols[i]) << endl;
+        for (int i = 0; i < userEdit.size(); ++i) {
+            cout << i + 1 << '\t' << get<1>(userEdit[i]) << endl;
         }
         cin >> get<0>(cPick);
     } while ((get<0>(cPick) < 1) || (get<0>(cPick) > symbols.size()));
@@ -104,10 +101,11 @@ tuple<int, string> Phrase::Menu() {
 void Phrase::Decryption(tuple<int, string> userSel) {
     get<0>(userEdit[get<0>(userSel)]) = get<1>(userSel);
     for (auto & i : textVec) {
-        if (i == get<1>(symbols[get<0>(userSel)])){
+        if (i == get<1>(userEdit[get<0>(userSel)])){
             i = get<1>(userSel);
         }
     }
+    get<1>(userEdit[get<0>(userSel)]) = get<1>(userSel);
 }
 
 void Phrase::SetAuthor(string auth) {
