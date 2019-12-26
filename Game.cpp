@@ -27,7 +27,7 @@ Game::~Game() {
 }
 
 void Game::GameStart() {
-    for (int i = 0; i < 1; ++i) {
+    for (int i = 0; i < levelsList.size(); ++i) {
         cout << "Starting level " << i+1 << ":" << endl;
         while (!(levelsList[i]->WinCheck())) {
             levelsList[i]->Display();
