@@ -82,19 +82,38 @@ bool Phrase::WinCheck() {
 tuple<int, string> Phrase::Menu() {
     tuple<int, string> cPick;
     char cSel;
+    bool exit = false;
+    string sSel;
     make_tuple(0, " ");
     do {
-        cout << "Select character to replace:" << endl;
+        cout << "Select character to replace or enter \"1000\" to exit:" << endl;
         for (int i = 0; i < userEdit.size(); ++i) {
             cout << i + 1 << '\t' << get<1>(userEdit[i]) << endl;
         }
         cin >> get<0>(cPick);
-    } while ((get<0>(cPick) < 1) || (get<0>(cPick) > symbols.size()));
-    get<0>(cPick)--;
-    cout << "Enter replacement character:" << endl;
-    cin >> cSel;
-    cSel = _tolower(cSel);
-    get<1>(cPick) = string(1, cSel);
+        if (get<0>(cPick) != 1000){
+            if ((get<0>(cPick) < 1) || (get<0>(cPick) > symbols.size())){
+                exit = true;
+            }
+        } else {
+            exit = false;
+        }
+    } while (exit);
+    if (get<0>(cPick)!= 1000){
+        get<0>(cPick)--;
+        cout << "Enter replacement character:" << endl;
+        cin >> cSel;
+        cSel = _tolower(cSel);
+        sSel = string(1, cSel);
+        for (int i = 0; i < userEdit.size(); ++i) {
+            if ((sSel == get<1>(userEdit[i])) && (i != (get<0>(cPick)))){
+                sSel = "ʭ";
+            }
+        }
+        get<1>(cPick) = sSel;
+    } else {
+        get<1>(cPick) = 'q';
+    }
     return cPick;
 }
 
@@ -106,10 +125,6 @@ void Phrase::Decryption(tuple<int, string> userSel) {
         }
     }
     get<1>(userEdit[get<0>(userSel)]) = get<1>(userSel);
-}
-
-void Phrase::SetAuthor(string auth) {
-    author = move(auth);
 }
 
 string Phrase::GetAuthor() {

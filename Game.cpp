@@ -27,14 +27,28 @@ Game::~Game() {
 }
 
 void Game::GameStart() {
+    tuple<int, string> change;
+    get<0>(change) = 0;
     for (int i = 0; i < levelsList.size(); ++i) {
         cout << "Starting level " << i + 1 << ":" << endl;
-        while (!(levelsList[i]->WinCheck())) {
+        while ((!levelsList[i]->WinCheck()) && (get<0>(change) != 1000)) {
             levelsList[i]->Display();
-            tuple<int, string> change = levelsList[i]->Menu();
-            levelsList[i]->Decryption(change);
+            change = levelsList[i]->Menu();
+            if (get<0>(change) != 1000){
+                if (get<1>(change) == "ʭ"){
+                    cout << "You can't repeat characters" << endl;
+                } else {
+                    levelsList[i]->Decryption(change);
+                }
+            }
         }
-        cout << "You win!" << endl;
+        if (get<0>(change) != 1000){
+            cout << levelsList[i]->GetInput() << endl;
+            cout << "You win!" << endl;
+        } else {
+            cout << "Thank you for playing!" << endl;
+            break;
+        }
     }
 }
 
