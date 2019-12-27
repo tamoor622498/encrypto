@@ -1,6 +1,3 @@
-#include <iostream>
-#include <ctime>
-#include <string>
 #include <vector>
 #include "Phrase.h"
 #include "Game.h"

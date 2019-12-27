@@ -39,12 +39,11 @@ public:
     void Decryption(tuple<int, string>);
     //Replaces text with user selection;
 
-    void SetAuthor(string auth);
-
     string GetAuthor();
+    // Get's author
 
     string GetInput();
-
+    //Get's Input
 
 private:
     vector<string> textVec;
@@ -60,9 +59,9 @@ private:
 "\u09CB", "\u0BF5", "\u0CF1", "\u0DF4", "\u0FCA", "\u1029", "\u1109", "\u1112", \
 "\u113D", "\u1360", "\u1368", "\u13C9", "\u13EB", "\u1408", "\u14EC", "\u15D2", \
 "\u15DC", "\u168F", "\u16E4", "\u15D5", "\u15D6", "\u15D7", "\u16DE", "\u1C6F", \
-"\u1C6A", "\u2029", "\u20E0", "\u2182", "\u21B9", "\u21BA", "\u21BB", \
-"\u21CB", "\u21EF", "\u21F6", "\u2230", "\u22A1", "\u2317", "\u2318", "\u231A", \
-"\u2658", "\u269C", "\u26C9", "\u27DB", "\u2995", "\uA087", "\uA154", "\uA51E"}; //page 165
+"\u1C6A", "\u2029", "\u20E0", "\u2182", "\u21B9", "\u21BA", "\u21BB", "\u21CB", \
+"\u21EF", "\u21F6", "\u2230", "\u22A1", "\u2317", "\u2318", "\u231A", "\u2658", \
+"\u269C", "\u26C9", "\u27DB", "\u2995", "\uA087", "\uA154", "\uA51E"}; //page 165
 };
 
 #endif

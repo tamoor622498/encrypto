@@ -1,5 +1,4 @@
 #include "Phrase.h"
-#include <utility>
 
 Phrase::Phrase() {
     cout << "Default constructor" << endl;

@@ -2,9 +2,6 @@
 #include "Phrase.h"
 
 Game::Game() {
-    //auto *test = new Phrase("It is possible to commit no mistakes and still lose. That is not weakness, that is life.");
-    //levelsList.push_back(test);
-    //test = nullptr;
     fstream levels;
     levels.open("../Phrases.txt");
     string text;
