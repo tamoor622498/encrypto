@@ -4,6 +4,7 @@
 #include <ctime>
 #include <vector>
 #include <tuple>
+#include <bits/stdc++.h>
 #include "Phrase.h"
 
 using namespace std;

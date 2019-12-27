@@ -1,4 +1,6 @@
 #include "Game.h"
+
+#include <random>
 #include "Phrase.h"
 
 Game::Game() {
@@ -14,6 +16,7 @@ Game::Game() {
     }
     newPhrase = nullptr;
     levels.close();
+    shuffle(levelsList.begin(), levelsList.end(), std::mt19937(std::random_device()()));
 }
 
 Game::~Game() {
